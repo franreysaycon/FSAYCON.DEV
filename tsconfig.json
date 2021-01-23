@@ -3,11 +3,6 @@
     "jsx": "preserve",
     "baseUrl": "src",
     "esModuleInterop": true,
-    "paths": {
-      "@/components/*": [
-        "components/*"
-      ]
-    },
     "target": "es5",
     "lib": [
       "dom",

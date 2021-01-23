@@ -1,6 +1,7 @@
 const theme = {
     fonts: {
-      blinker: 'Blinker, Arial, Helvetica, sans-serif',
+      barlow: 'Barlow, Arial, Helvetica, sans-serif',
+      staatchiles: 'Staatliches, sans-serif',
     },
     fontSizes: [
       '0.563rem',
@@ -16,9 +17,11 @@ const theme = {
       green: '#33888f',
       purple: '#814d97',
       white: '#eeeeee',
-      orange: '#faa945',
+      orange: '#EE9C0F',
+      black: '#3B3D3E',
     },
     spaces: [
+      '0.422rem',
       '0.563rem',
       '0.75rem',
       '1rem',
