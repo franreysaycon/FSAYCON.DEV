@@ -1,7 +1,7 @@
 import Homepage from "components/homepage"
 import React from "react"
 
-const Page = () => (
+const Page: React.FC = () => (
   <Homepage />
 )
 
