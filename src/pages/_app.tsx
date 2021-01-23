@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import Head from 'next/head';
 import { Reset } from 'styled-reset';
+import GlobalStyle from 'global-styles';
 import theme from '../theme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
@@ -32,8 +33,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       {/* <link rel="shortcut icon" href={Favicon} type="image/x-icon" />
       <link rel="icon" href={Favicon} type="image/x-icon" /> */}
     </Head>
+    <GlobalStyle />
     <Component {...pageProps} />
   </ThemeProvider>
 );
 
-export default MyApp; 
+export default MyApp;
