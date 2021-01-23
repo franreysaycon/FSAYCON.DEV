@@ -10,10 +10,11 @@ const theme = {
       '1.333rem',
       '1.777rem',
       '2.369rem',
+      "3.052rem",
     ],
     colors: {
-      blue: '#336bb8',
-      violet: '#41328f',
+      blue: '#40C9FF',
+      gray: '#F3F3F3',
       green: '#33888f',
       purple: '#814d97',
       white: '#eeeeee',
