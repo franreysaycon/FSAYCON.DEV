@@ -1,12 +1,12 @@
 import React from "react"
+import Page from "../common/Page"
 import Hero from "./Hero"
-import NavBar from "./NavBar"
+
 
 const Homepage: React.FC = () => (
-  <>
-    <NavBar />
+  <Page>
     <Hero />
-  </>
+  </Page>
 )
 
 export default Homepage
