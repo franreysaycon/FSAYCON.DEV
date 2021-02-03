@@ -3,6 +3,7 @@ export interface BlogMetaData {
     date: string;
     slug: string;
     duration: string;
+    preview: string;
 }
 
 export interface BlogPageProps {

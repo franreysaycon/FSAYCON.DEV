@@ -1,7 +1,8 @@
 import BlogApp from "components/blog"
-import { BlogMetaData, BlogPageProps } from "components/blog/types"
-import matter from "gray-matter"
-import { NextPage } from "next"
+import { BlogPageProps } from "components/blog/types"
+import getAllPosts from "lib/get-all-posts"
+import getPostBySlug from "lib/get-post-by-slug"
+import { GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import React from "react"
 
@@ -19,20 +20,26 @@ const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
   </>
 )
 
-BlogPage.getInitialProps = async (context): Promise<BlogPageProps> => {
-  const { slug } = context.query
-  
-  const markdown = await import(`../../content/${slug}.md`)
-  const { content, data } = matter(markdown.default)
-
-  const metadata: BlogMetaData = {
-    title: data.title,
-    date: data.date,
-    duration: data.duration,
-    slug: slug as string,
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const post = getPostBySlug(params.slug as string)
+  return {
+    props: post,
   }
+}
 
-  return { content, data: metadata }
+export const getStaticPaths = async () => {
+  const { items } = getAllPosts()
+
+  return {
+    paths: items.map((item) => {
+      return {
+        params: {
+          slug: item.data.slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
 }
 
 export default BlogPage

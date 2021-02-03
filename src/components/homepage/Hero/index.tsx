@@ -49,15 +49,6 @@ const Detail = styled.p`
   font-family: ${({ theme }) => theme.fonts.barlow};
 `
 
-const BlogContainer = styled.div`
-  position: relative;
-  top: -90px;
-  z-index: 1;
-  background-color: ${({ theme }) => theme.colors.gray};
-  min-height: 50rem;
-  width: 100%;
-`
-
 const Hero: React.FC = () => (
   <Container>
     <MarginBox>
@@ -73,9 +64,6 @@ const Hero: React.FC = () => (
         </Detail>
       </DetailBox>
     </MarginBox>
-    <BlogContainer>
-      Lorem ipsum
-    </BlogContainer>
   </Container>
 )
 

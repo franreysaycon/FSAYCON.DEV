@@ -6,7 +6,7 @@ import { Reset } from 'styled-reset';
 import GlobalStyle from 'global-styles';
 import theme from '../theme';
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (
   <ThemeProvider theme={theme}>
     <Reset />
     <Head>
