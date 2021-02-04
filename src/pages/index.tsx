@@ -6,7 +6,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { items } = getAllPosts()
   return {
     props: {
-        items: [...items, ...items, ...items, ...items]
+        items: [...items]
     }
   }
 }

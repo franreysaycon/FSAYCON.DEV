@@ -3,6 +3,8 @@ import styled from "styled-components"
 
 const StyledImage = styled.img`
   width: 25rem;
+  position: relative;
+  top: 50px;
 `
 
 const HeroImage: React.FC = () => (

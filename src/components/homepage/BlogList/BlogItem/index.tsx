@@ -9,6 +9,7 @@ const BlogItemContainer = styled.div`
   display: flex;
   flex: 1;
   background-color: ${({ theme }) => theme.colors.white};
+  height: 15rem;
   
   &:hover {
     cursor: pointer;

@@ -9,11 +9,13 @@ const Box = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
+  height: 18rem;
+  overflow: hidden;
+  position: relative;
 `
 
 const DetailBox = styled(Box)`
   position: relative;
-  top: -50px;
   flex-direction: column;
   align-items: flex-start;
 `

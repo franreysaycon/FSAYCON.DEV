@@ -8,7 +8,6 @@ import Hero from "./Hero"
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 20rem;
   margin-top: ${({ theme }) => theme.spaces[5]};
   flex-direction: column;
 `
