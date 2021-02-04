@@ -1,6 +1,7 @@
 import MarginBox from "atoms/MarginBox"
 import React from "react"
 import styled from "styled-components"
+import BlogItem from "./BlogItem"
 import { BlogListProps } from "./types"
 
 const Container = styled.div`
@@ -20,54 +21,11 @@ const BlogContainer = styled(MarginBox)`
   padding-bottom: ${({ theme }) => theme.spaces[2]};
 `
 
-const BlogItem = styled.a`
-  text-decoration: none;
-  background-color: ${({ theme }) => theme.colors.white};
-`
-
-const BlogItemContainer = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`
-
-const PreviewImage = styled.div`
-  background: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 12rem;
-`
-
-const MetaContainer = styled.div`
-  display: flex;
-  background-color: ${({ theme }) => theme.colors.blue};
-  font-family: ${({ theme }) => theme.fonts.barlow};
-  flex-direction: column;
-  height: 3rem;
-  outline: none;
-`
-
-const MarginSpan = styled.span`
-  margin-left: ${({ theme }) => theme.spaces[1]};
-  margin-right: ${({ theme }) => theme.spaces[1]};
-`
-
 const BlogList: React.FC<BlogListProps> = ({ items }) => (
   <Container>
     <BlogContainer>
       {
-        items.map(item => (
-          <BlogItem href={`/blog/${item.data.slug}`}>
-            <BlogItemContainer>
-              <PreviewImage image={item.data.preview} />
-              <MetaContainer>
-                <MarginSpan>{item.data.title}</MarginSpan>
-                <MarginSpan>{item.data.date}</MarginSpan>
-              </MetaContainer>
-            </BlogItemContainer>
-          </BlogItem>
-        ))
+        items.map(item => <BlogItem {...item.data} key={item.data.slug} />)
       }
     </BlogContainer>
   </Container>

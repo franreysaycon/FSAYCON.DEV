@@ -2,7 +2,7 @@ import BlogApp from "components/blog"
 import { BlogPageProps } from "components/blog/types"
 import getAllPosts from "lib/get-all-posts"
 import getPostBySlug from "lib/get-post-by-slug"
-import { GetStaticProps, NextPage } from "next"
+import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import React from "react"
 
@@ -27,17 +27,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths  = async () => {
   const { items } = getAllPosts()
 
   return {
-    paths: items.map((item) => {
-      return {
+    paths: items.map((item) => ({
         params: {
           slug: item.data.slug,
         },
-      }
-    }),
+      })),
     fallback: false,
   }
 }

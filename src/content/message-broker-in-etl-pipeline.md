@@ -1,7 +1,9 @@
 ---
-title: 'A Message Broker Centric ETL Architecture'
+title: 'Message Broker ETL Architecture'
 date: '2021-01-31'
 duration: '10 minutes'
+tags: 'Backend, Software Architecture, ETL, Big Data'
+description: "Explore with me on the role of a message broker in an ETL pipeline. Let's learn how we could scale our data workers in this paradigm!"
 ---
 
 One of the demands of maintaining an ETL pipeline is to address the scale to efficiently handle the load an organization needs. Dependent on the volume of the data, especially in the world of big data, extraction, transformation and loading of this data could take several days of which is most likely not ideal in the context of growth. Not to mention, there are use cases where this process must be done on demand as users use your applications especially if we are trying to form an accurate data set of or for your users. Of course, in this article, I won't be assuming you have a supercomputer that makes these concerns a bit less daunting. Let's try to improve our pipelines through software architecture.

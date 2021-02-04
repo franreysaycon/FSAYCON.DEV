@@ -18,7 +18,8 @@ const getPostBySlug = (slug: string): BlogPageProps => {
     date: data.date,
     duration: data.duration,
     slug: slug as string,
-    preview: `${slug}/preview.png`
+    tags: data.tags.split(','),
+    description: data.description,
   }
 
   return { content, data: metadata }

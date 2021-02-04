@@ -3,14 +3,6 @@ import React from "react"
 import styled from "styled-components"
 import HeroImage from "./HeroImage"
 
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  height: 20rem;
-  margin-top: ${({ theme }) => theme.spaces[5]};
-  flex-direction: column;
-`
-
 const Box = styled.div`
   height: inherit;
   display: flex;
@@ -50,21 +42,19 @@ const Detail = styled.p`
 `
 
 const Hero: React.FC = () => (
-  <Container>
-    <MarginBox>
-      <Box>
-        <HeroImage />
-      </Box>
-      <DetailBox>
-        <Header>Franrey Saycon</Header>
-        <SubHeader>Software engineer / Architect • Team Lead</SubHeader>
-        <Detail>
-          I just like writing and speaking about developing and 
-          architecting solutions. There&apos;s also some random stuff too.
-        </Detail>
-      </DetailBox>
-    </MarginBox>
-  </Container>
+  <MarginBox>
+    <Box>
+      <HeroImage />
+    </Box>
+    <DetailBox>
+      <Header>Franrey Saycon</Header>
+      <SubHeader>Software engineer / Architect • Team Lead</SubHeader>
+      <Detail>
+        I just like writing and speaking about developing and 
+        architecting solutions. There&apos;s also some random stuff too.
+      </Detail>
+    </DetailBox>
+  </MarginBox>
 )
 
 export default Hero

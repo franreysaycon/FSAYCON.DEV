@@ -1,19 +1,19 @@
 export interface BlogMetaData {
-    title: string;
-    date: string;
-    slug: string;
-    duration: string;
-    preview: string;
+  title: string;
+  date: string;
+  slug: string;
+  duration: string;
+  tags: string[];
+  description: string;
 }
-
 export interface BlogPageProps {
-    content: string | null;
-    data: BlogMetaData;
+  content: string | null;
+  data: BlogMetaData;
 }
 
 export interface BlogAppProps {
-    content: string | null;
-    title: string;
-    date: string;
-    duration: string;
+  content: string | null;
+  title: string;
+  date: string;
+  duration: string;
 }
