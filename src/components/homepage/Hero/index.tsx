@@ -2,23 +2,7 @@ import MarginBox from "atoms/MarginBox"
 import React from "react"
 import styled from "styled-components"
 import HeroImage from "./HeroImage"
-
-const Box = styled.div`
-  height: inherit;
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  height: 18rem;
-  overflow: hidden;
-  position: relative;
-`
-
-const DetailBox = styled(Box)`
-  position: relative;
-  flex-direction: column;
-  align-items: flex-start;
-`
+import Box from "./Box"
 
 const Header = styled.h1`
   font-family: ${({ theme }) => theme.fonts.staatchiles};
@@ -41,10 +25,29 @@ const SubHeader = styled.h2`
 const Detail = styled.p`
   margin-top: ${({ theme }) => theme.spaces[2]};
   font-family: ${({ theme }) => theme.fonts.barlow};
+  text-align: center;
+  max-width: 20rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
+    text-align: left;
+    max-width: none;
+  }
+`
+
+const Container = styled(MarginBox)`
+  margin-top: ${({ theme }) => theme.spaces[2]};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
+    margin-top: ${({ theme }) => theme.spaces[5]};
+  }
+`
+
+const DetailBox = styled(Box)`
+  display: flex;
 `
 
 const Hero: React.FC = () => (
-  <MarginBox>
+  <Container>
     <Box>
       <HeroImage />
     </Box>
@@ -56,7 +59,7 @@ const Hero: React.FC = () => (
         architecting solutions. There&apos;s also some random stuff too.
       </Detail>
     </DetailBox>
-  </MarginBox>
+  </Container>
 )
 
 export default Hero

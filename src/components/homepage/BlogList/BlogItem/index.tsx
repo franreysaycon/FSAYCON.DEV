@@ -26,7 +26,7 @@ const MarginContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin: ${({ theme }) => theme.spaces[1]};
+  margin: ${({ theme }) => theme.spaces[3]};
   font-family: ${({ theme }) => theme.fonts.barlow};
   color: ${({ theme }) => theme.colors.black};
 `

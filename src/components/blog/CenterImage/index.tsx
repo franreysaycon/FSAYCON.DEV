@@ -1,4 +1,5 @@
-import React from "react"
+import Modal from "atoms/Modal"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -8,11 +9,10 @@ const Container = styled.div`
   justify-content: center;
   margin: ${({ theme }) => theme.spaces[2]};
   flex-direction: column;
-`
 
-const Image = styled.img`
-  width: 100%;
-  margin-bottom: ${({ theme }) => theme.spaces[0]};
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const AltText = styled.span`
@@ -21,11 +21,64 @@ const AltText = styled.span`
   color: inherit;
 `
 
-const CenterImage: React.FC<JSX.IntrinsicElements['img']> = ({ src, alt }) => (
-  <Container>
-    <Image src={src} alt={alt} />
-    <AltText>{alt}</AltText>
-  </Container>
-)
+const Image = styled.img`
+  width: 100%;
+  margin-bottom: ${({ theme }) => theme.spaces[0]};
+`
+
+const CenterImageModal = styled(Modal)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  height: fit-content;
+  padding-top: ${({ theme }) => theme.spaces[3]};
+  padding-bottom: ${({ theme }) => theme.spaces[3]};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
+    width: 50rem;
+  }
+`
+
+const CenterImage: React.FC<JSX.IntrinsicElements['img']> = ({ src, alt }) => {
+
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const closeModal = (e: Event): void => {
+    e.stopPropagation()
+    setModalOpen(false)
+  }
+
+  const openModal = (): void => {
+    if(!modalOpen){
+      setModalOpen(true)
+    }
+  }
+
+  useEffect(() => {
+    if(modalOpen){
+      document.body.style.overflow = 'hidden';
+    }
+    else{
+      document.body.style.overflow = 'scroll';
+    }
+  }, [modalOpen])
+
+  return (
+    <>
+      <Container onClick={openModal}>
+        <Image src={src} alt={alt} />
+        <AltText>{alt}</AltText>
+      </Container>
+      {
+        modalOpen && (
+          <CenterImageModal onClose={closeModal}>
+            <Image src={src} alt={alt} />
+          </CenterImageModal>
+        )
+      }
+    </>
+  )
+}
 
 export default CenterImage
