@@ -1,6 +1,6 @@
-import Button from "atoms/Button"
 import React from "react"
 import styled from "styled-components"
+import ReachMe from "./ReachMe"
 
 const Container = styled.div`
   display: flex;
@@ -13,14 +13,12 @@ const Container = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[1]};
 `
 
-const ReachButton = styled(Button)`
-  margin-left: ${({ theme }) => theme.spaces[3]};
-`
+
 
 const NavLink: React.FC = () => (
   <Container>
     <span>Home</span>
-    <ReachButton>Want to reach me?</ReachButton>
+    <ReachMe />
   </Container>
 )
 

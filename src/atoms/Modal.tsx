@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import useOutsideClick from 'hooks/use-outside-click'
 import useKeyDown from 'hooks/use-key-down'
 
-interface ModalProps {
+export interface ModalProps {
   className?: string;
   children: React.ReactNode;
   onClose: () => void;

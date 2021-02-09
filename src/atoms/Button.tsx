@@ -11,6 +11,11 @@ const StyledButton = styled.button`
   font-family: ${({ theme }) => theme.fonts.barlow};
   font-size: inherit;
   text-transform: inherit;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 type ButtonProps = {
