@@ -46,7 +46,6 @@ const Modal: React.FC<ModalProps> = ({ className, children, onClose }) => {
 
   const clickStopPropagation = (e: Event) => {
     e.stopPropagation()
-    e.stopImmediatePropagation()
   }
 
   return ReactDOM.createPortal(
