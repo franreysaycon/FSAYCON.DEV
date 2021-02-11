@@ -58,6 +58,7 @@ const BlogPage: NextPage<BlogAppProps> = ({ content , title, duration, date}) =>
           paragraph: Paragraph,
           thematicBreak: Divider,
           image: CenterImage,
+          heading: Header.H3,
         }}
         >
           {content}
