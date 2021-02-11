@@ -53,10 +53,10 @@ const Hero: React.FC = () => (
     </Box>
     <DetailBox>
       <Header>Franrey Saycon</Header>
-      <SubHeader>Software engineer / Architect • Team Lead</SubHeader>
+      <SubHeader>Software Engineer / Architect • Team Lead</SubHeader>
       <Detail>
-        I just like writing and speaking about developing and 
-        architecting solutions. There&apos;s also some random stuff too.
+        Hi there! I like sharing my knowledge about software engineering and architecture.
+        I love solving problems. Let&apos;s learn together!
       </Detail>
     </DetailBox>
   </Container>

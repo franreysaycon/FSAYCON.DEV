@@ -44,8 +44,7 @@ const CenterImage: React.FC<JSX.IntrinsicElements['img']> = ({ src, alt }) => {
 
   const [modalOpen, setModalOpen] = useState(false)
 
-  const closeModal = (e: Event): void => {
-    e.stopPropagation()
+  const closeModal = (): void => {
     setModalOpen(false)
   }
 

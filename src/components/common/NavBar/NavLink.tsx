@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 import styled from "styled-components"
 import ReachMe from "./ReachMe"
@@ -13,11 +14,20 @@ const Container = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[1]};
 `
 
+const NavItem = styled.span`
+  color: inherit;
+  text-decoration: none;
 
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`
 
 const NavLink: React.FC = () => (
   <Container>
-    <span>Home</span>
+    <Link href="/"><NavItem>Home</NavItem></Link>
     <ReachMe />
   </Container>
 )

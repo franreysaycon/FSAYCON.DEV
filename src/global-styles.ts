@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
-    scrollbar-width: 0px;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     html {
@@ -19,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: ${({theme}) => theme.fonts.main};
     background-color: ${({theme}) => theme.colors.primaryWhite};
+    overflow-x: hidden;
   }
 `
 
