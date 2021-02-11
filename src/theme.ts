@@ -1,6 +1,6 @@
 const theme = {
   fonts: {
-    barlow: 'Barlow, Arial, Helvetica, sans-serif',
+    barlow: 'Barlow Condensed, sans-serif',
     staatchiles: 'Staatliches, sans-serif',
     robotoSlab: "Roboto Slab, serif"
   },

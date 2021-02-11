@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { Reset } from 'styled-reset';
 import GlobalStyle from 'global-styles';
 import theme from '../theme';
-import "typeface-barlow";
+import "typeface-barlow-condensed";
 import "typeface-staatliches";
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (

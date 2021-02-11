@@ -23,7 +23,7 @@
     "react-spring": "^8.0.27",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4",
-    "typeface-barlow": "^1.1.13",
+    "typeface-barlow-condensed": "^1.1.13",
     "typeface-staatliches": "^1.1.13"
   },
   "devDependencies": {
