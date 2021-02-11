@@ -4,6 +4,12 @@ import styled from "styled-components"
 import HeroImage from "./HeroImage"
 import Box from "./Box"
 
+const HeroBox = styled(Box)`
+  @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
+    align-items: flex-end;
+  }
+`
+
 const Header = styled.h1`
   font-family: ${({ theme }) => theme.fonts.staatchiles};
   margin: 0;
@@ -48,9 +54,9 @@ const DetailBox = styled(Box)`
 
 const Hero: React.FC = () => (
   <Container>
-    <Box>
+    <HeroBox>
       <HeroImage />
-    </Box>
+    </HeroBox>
     <DetailBox>
       <Header>Franrey Saycon</Header>
       <SubHeader>Software Engineer / Architect • Team Lead</SubHeader>
