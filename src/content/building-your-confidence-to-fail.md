@@ -3,7 +3,7 @@ title: 'Building Your Confidence To Fail'
 date: '2021-02-11'
 duration: '15 minutes'
 tags: 'DevOps, Sofware Architecture, Best Practices, Dev Culture'
-description: 'Software engineering in a nutshell demands that you produce an output as fast and as stable as possible. My approach to this discipline is building my confidence to fail.'
+description: 'Chaos is part of the software engineering experience. To adapt, one must build confidence to fail.'
 ---
 
 The world of IT is everchanging faster than ever. When you have a software product that you want to be ahead in the market, it's in your best interest that this is of quality, user-friendly and can grow as fast as possible. It follows that your company practices the best known standards in developing, deploying, and scaling software. Many would argue what that "best" standards are. But for me, to keep things simple in my head, it always has just been building my confidence to fail. So what does that mean?
