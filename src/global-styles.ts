@@ -1,6 +1,30 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Staatliches';
+    src:  url('/fonts/staatliches/staatliches-regular.woff2') format('woff2'),
+          url('/fonts/staatliches/staatliches-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Barlow Condensed';
+    src:  url('/fonts/barlow-condensed/barlow-condensed-regular.woff2') format('woff2'),
+          url('/fonts/barlow-condensed/barlow-condensed-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Barlow Condensed';
+    src:  url('/fonts/barlow-condensed/barlow-condensed-bold.woff2') format('woff2'),
+          url('/fonts/barlow-condensed/barlow-condensed-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: bold;
+    font-display: block;
+  }
   html {
     font-size: 16px;
   }
