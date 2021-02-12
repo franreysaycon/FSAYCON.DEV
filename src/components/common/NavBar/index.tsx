@@ -2,9 +2,10 @@ import React from "react"
 import MarginBox from "atoms/MarginBox"
 import styled from "styled-components"
 import Logo from "atoms/Logo"
+import { motion } from "framer-motion"
 import NavLink from "./NavLink"
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   background-color: ${({ theme }) => theme.colors.black };
   display: flex;
@@ -20,7 +21,11 @@ const NavBox = styled(MarginBox)`
 `
 
 const NavBar: React.FC = () => (
-  <Container>
+  <Container
+    animate={{ y: 0, opacity: 1 }}
+    initial={{ y: -10, opacity: 0 }}
+    transition={{ ease: "easeIn", duration: 0.5 }}
+  >
     <NavBox>
       <Logo />
       <NavLink />

@@ -16,12 +16,6 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Reset />
       <Head>
         <title>FSAYCON.DEV - Personal Website of Franrey Saycon</title>
-        <link rel="preload" href="/fonts/barlow-condensed/barlow-condensed-regular.woff2" as="font" type="font/woff2" crossOrigin="*" />
-        <link rel="preload" href="/fonts/barlow-condensed/barlow-condensed-regular.woff" as="font" type="font/woff" crossOrigin="*" />
-        <link rel="preload" href="/fonts/barlow-condensed/barlow-condensed-bold.woff2" as="font" type="font/woff2" crossOrigin="*" />
-        <link rel="preload" href="/fonts/barlow-condensed/barlow-condensed-bold.woff" as="font" type="font/woff" crossOrigin="*" />
-        <link rel="preload" href="/fonts/staatliches/staatliches-regular.woff2" as="font" type="font/woff2" crossOrigin="*" />
-        <link rel="preload" href="/fonts/staatliches/staatliches-regular.woff" as="font" type="font/woff" crossOrigin="*" />
         <meta
           name="description"
           content="Hi there, I'm Franrey Saycon. I'm a software engineer specializing in architecting solutions

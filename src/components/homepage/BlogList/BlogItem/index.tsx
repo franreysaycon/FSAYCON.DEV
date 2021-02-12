@@ -4,9 +4,11 @@ import styled from "styled-components"
 import Link from "next/link"
 import Header from "atoms/Header"
 import Tag from "atoms/Tag"
+import { motion } from "framer-motion"
 
-const BlogItemContainer = styled.div`
+const BlogItemContainer = styled(motion.div)`
   display: flex;
+  position: relative;
   flex: 1;
   background-color: ${({ theme }) => theme.colors.white};
   height: 15rem;
@@ -49,9 +51,18 @@ const TagContainer = styled.div`
   align-self: flex-end;
 `
 
-const BlogItem: React.FC<BlogMetaData> = ({ slug, title, date, tags, duration, description }) => (
+interface BlogItemProps extends BlogMetaData {
+  index: number;
+}
+
+const BlogItem: React.FC<BlogItemProps> = ({ slug, title, date, tags, duration, description, index }) => (
   <Link href={`/blog/${slug}`}>
-    <BlogItemContainer>
+    <BlogItemContainer
+      animate={{ scale: 1, opacity: 1 }}
+      initial={{ scale: 0.9, opacity: 0 }}
+      transition={{ ease: "easeIn", duration: 0.5, delay: 1 + (index*0.1) }}
+      whileHover={{ top: -5 }}
+    >
       <MarginContainer>
         <ArticleContainer>
           <Header.H2>{title}</Header.H2>

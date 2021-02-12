@@ -1,6 +1,7 @@
 import Button from "atoms/Button"
 import Header from "atoms/Header"
 import Modal from "atoms/Modal"
+import { motion } from "framer-motion"
 import { openLinkInNewTab, openMailTo } from "lib/open-link"
 import React, { useState } from "react"
 import { GitHub, Linkedin, Mail } from "react-feather"
@@ -45,7 +46,7 @@ const IconContainer = styled.div`
   }
 `
 
-const ContactRef = styled.div`
+const ContactRef = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,9 +74,27 @@ const ReachMe: React.FC = () => {
             <Detail>If you have any feedback or questions about my content, don&apos;t hesitate to send a message or email!</Detail>
             <Detail>I am always in a lookout for good opportunities as well. You&apos;ll never know.</Detail>
             <IconContainer>
-              <ContactRef aria-label="Email Link: me@fsaycon.dev" onClick={() => openMailTo("me@fsaycon.dev")}><Mail color={theme.colors.white} width="1.5rem" height="1.5rem" /></ContactRef>
-              <ContactRef aria-label="Linkedin Link" onClick={() => openLinkInNewTab("https://www.linkedin.com/in/fssaycon/")}><Linkedin color={theme.colors.white} width="1.5rem" height="1.5rem" /></ContactRef>
-              <ContactRef aria-label="Github Link" onClick={() => openLinkInNewTab("https://github.com/franreysaycon")}><GitHub color={theme.colors.white} width="1.5rem" height="1.5rem" /></ContactRef>
+              <ContactRef
+                aria-label="Email Link: me@fsaycon.dev" 
+                onClick={() => openMailTo("me@fsaycon.dev")}
+                whileHover={{ scale: 1.1 }}
+              >
+                <Mail color={theme.colors.white} width="1.5rem" height="1.5rem" />
+              </ContactRef>
+              <ContactRef 
+                aria-label="Linkedin Link"
+                onClick={() => openLinkInNewTab("https://www.linkedin.com/in/fssaycon/")}
+                whileHover={{ scale: 1.1 }}
+              >
+                <Linkedin color={theme.colors.white} width="1.5rem" height="1.5rem" />
+              </ContactRef>
+              <ContactRef
+                aria-label="Github Link"
+                onClick={() => openLinkInNewTab("https://github.com/franreysaycon")}
+                whileHover={{ scale: 1.1 }}
+              >
+                <GitHub color={theme.colors.white} width="1.5rem" height="1.5rem" />
+              </ContactRef>
             </IconContainer>
             <Detail>
               Plus ultra! Support me by&nbsp;

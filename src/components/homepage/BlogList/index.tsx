@@ -22,7 +22,7 @@ const BlogList: React.FC<BlogListProps> = ({ items }) => (
   <Container>
     <BlogContainer>
       {
-        items.map(item => <BlogItem {...item.data} key={item.data.slug} />)
+        items.map((item, i) => <BlogItem {...item.data} key={item.data.slug} index={i} />)
       }
     </BlogContainer>
   </Container>

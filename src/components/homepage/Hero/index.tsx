@@ -1,6 +1,7 @@
 import MarginBox from "atoms/MarginBox"
 import React from "react"
 import styled from "styled-components"
+import { motion } from "framer-motion"
 import HeroImage from "./HeroImage"
 import Box from "./Box"
 
@@ -10,7 +11,7 @@ const HeroBox = styled(Box)`
   }
 `
 
-const Header = styled.h1`
+const Header = styled(motion.h1)`
   font-family: ${({ theme }) => theme.fonts.staatchiles};
   margin: 0;
   font-size: ${({ theme }) => theme.fontSizes[6]};
@@ -18,7 +19,7 @@ const Header = styled.h1`
   text-transform: uppercase;
 `
 
-const SubHeader = styled.h2`
+const SubHeader = styled(motion.h2)`
   position: relative;
   top: -8px;
   font-family: ${({ theme }) => theme.fonts.staatchiles};
@@ -28,7 +29,7 @@ const SubHeader = styled.h2`
   text-transform: uppercase;
 `
 
-const Detail = styled.p`
+const Detail = styled(motion.p)`
   margin-top: ${({ theme }) => theme.spaces[2]};
   font-family: ${({ theme }) => theme.fonts.barlow};
   text-align: center;
@@ -58,9 +59,25 @@ const Hero: React.FC = () => (
       <HeroImage />
     </HeroBox>
     <DetailBox>
-      <Header>Franrey Saycon</Header>
-      <SubHeader>Software Engineer / Architect • Team Lead</SubHeader>
-      <Detail>
+      <Header
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -25 }}
+        transition={{ ease: "easeIn", duration: 1 }}
+      >
+        Franrey Saycon
+      </Header>
+      <SubHeader
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ ease: "easeIn", duration: 0.75, delay: 0.25 }}
+      >
+        Software Engineer / Architect • Team Lead
+      </SubHeader>
+      <Detail
+        animate={{ scale: 1, opacity: 1 }}
+        initial={{ scale: 0.75, opacity: 0 }}
+        transition={{ ease: "easeIn", duration: 0.75, delay: 0.5 }}
+      >
         Hi there! I like sharing my knowledge about software engineering and architecture.
         I love solving problems. Let&apos;s learn together!
       </Detail>

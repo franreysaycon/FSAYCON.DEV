@@ -13,6 +13,7 @@
   "dependencies": {
     "@mdx-js/react": "^1.6.22",
     "fontfaceobserver": "^2.1.0",
+    "framer-motion": "^3.3.0",
     "gray-matter": "^4.0.2",
     "moment": "^2.29.1",
     "next": "10.0.4",

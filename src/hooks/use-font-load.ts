@@ -8,7 +8,6 @@ interface FontStatus {
 function useFontLoad(fonts: string[]): FontStatus  {
 
     const [fontLoaded, setFontLoaded] = useState(false)
-
     useEffect(() => {
         const loadFonts = async (): Promise<void> => {
             const observers = fonts.map(font => new FontFaceObserver(font))
