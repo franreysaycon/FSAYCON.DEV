@@ -31,6 +31,6 @@ const NavBar: React.FC = () => (
       <NavLink />
     </NavBox>
   </Container>
-)
+  )
 
 export default NavBar

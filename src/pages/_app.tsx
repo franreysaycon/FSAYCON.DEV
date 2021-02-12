@@ -5,6 +5,8 @@ import Head from 'next/head';
 import { Reset } from 'styled-reset';
 import GlobalStyle from 'global-styles';
 import useFontLoad from 'hooks/use-font-load';
+import NavBar from 'components/common/NavBar';
+import Footer from 'components/common/Footer';
 import theme from '../theme';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -37,7 +39,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         <meta
           property="og:image:alt"
           content="Fantasy drawing of Franrey Saycon in a sci-fi mechanic suit solving a cosmic rubix cube."
-          key="og:image:alt" 
+          key="og:image:alt"
         />
         <meta property="og:url" content="https://fsaycon.dev/" key="og:url" />
         <meta property="og:site_name" content="FSAYCON.DEV - Personal Website of Franrey Saycon" key="og:site_name" />
@@ -46,12 +48,16 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       </Head>
       <GlobalStyle />
       {
-        fontLoaded && <Component {...pageProps} />
+        fontLoaded && (
+          <>
+            <NavBar />
+            <Component {...pageProps} />
+            <Footer />
+          </>
+        )
       }
     </ThemeProvider>
   );
 }
-
-
 
 export default MyApp;
