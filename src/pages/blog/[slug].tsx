@@ -10,11 +10,11 @@ const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
   <>
     <Head>
       <link rel="canonical" href={`https://fsaycon.dev/blog/${data.slug}`} />
-      <meta property="og:url" content={`https://fsaycon.dev/blog/${data.slug}`} />
-      <meta name="description" content={data.description} />
-      <meta name="og:description" content={data.description} />    
-      <meta property="og:type" content="article" />
-      <meta property="og:title" content={data.title} />
+      <meta property="og:url" content={`https://fsaycon.dev/blog/${data.slug}`} key="og:url" />
+      <meta name="description" content={data.description} key="description" />
+      <meta name="og:description" content={data.description} key="og:description" />    
+      <meta property="og:type" content="article" key="og:type" />
+      <meta property="og:title" content={data.title} key="og:title" />
     </Head>
     <BlogApp
       content={content}
