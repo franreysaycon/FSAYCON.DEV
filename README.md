@@ -8,20 +8,21 @@ This repo contains the source code for my personal website using Next as the pri
 
 ## Pre-requisites
 
-Anything that next needs. https://nextjs.org/
-Yarn installed.
+- Anything that next needs. https://nextjs.org/
+- Yarn installed.
 
 ## Installation
 
-yarn
+`yarn`
 
 ## Running the Environment
 
-yarn dev
+`yarn dev`
 
 ## Building production
 
-yarn deploy
+`yarn deploy`
+
 This will generate the out folder which contains the static generated site derived from the source code.
 
 "The first and greatest victory is to conquer yourself; to be conquered by yourself is of all things most shameful and vile." - Plato
