@@ -1,4 +1,5 @@
-FSAYCON.DEV - Personal Website of Franrey Saycon
+# FSAYCON.DEV - Personal Website of Franrey Saycon
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9b7b8139-9333-4e78-b70b-26259036077f/deploy-status)](https://app.netlify.com/sites/kind-darwin-8469ed/deploys)
 
 Break past your limits! Plus ultra! ✊
@@ -22,22 +23,6 @@ yarn dev
 
 yarn deploy
 This will generate the out folder which contains the static generated site derived from the source code.
-
-Roadmap 🍫
-Chapter 1: Website Initials 🐲
-✅ Create design of the website.
-✅ Implement website initially in Next.
-✅ Add Hero Image Loading strategy.
-✅ Add Husky pre-hooks for linting.
-🔲 Integrate storybook.
-🔲 Integrate react testing && update prehooks.
-🔲 Integrate CI for linting, testing and docs
-
-Chapter 2: Blog 🌅
-🔲 Coming soon
-
-Chapter 3: Website Marketplace 🏪
-🔲 Coming soon
 
 "The first and greatest victory is to conquer yourself; to be conquered by yourself is of all things most shameful and vile." - Plato
 
