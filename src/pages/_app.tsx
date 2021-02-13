@@ -35,7 +35,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         and building website/mobile apps."
           key="og:description"
         />
-        <meta property="og:image" content="/preview-image.png" key="og:image" />
+        <meta property="og:image" content="https://fsaycon.dev/preview-image.png" key="og:image" />
         <meta
           property="og:image:alt"
           content="Fantasy drawing of Franrey Saycon in a sci-fi mechanic suit solving a cosmic rubix cube."
