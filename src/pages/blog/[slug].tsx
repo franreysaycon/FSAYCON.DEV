@@ -25,7 +25,14 @@ const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getPostBySlug(params.slug as string)
   return {
-    props: post,
+    props: { 
+      ...post,
+      meta: {
+        title: `FSAYCON.DEV - ${post.data.title}`,
+        description: post.data.description,
+        link: `https://fsaycon.dev/blog/${post.data.slug}`,
+      },
+    }
   }
 }
 
