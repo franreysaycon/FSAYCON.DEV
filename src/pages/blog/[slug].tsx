@@ -14,11 +14,12 @@ const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
         {data.title}
       </title>
       <link rel="canonical" href={`https://fsaycon.dev/blog/${data.slug}`} />
-      <meta property="og:url" content={`https://fsaycon.dev/blog/${data.slug}`} key="og:url" />
       <meta name="description" content={data.description} key="description" />
-      <meta name="og:description" content={data.description} key="og:description" />    
-      <meta property="og:type" content="article" key="og:type" />
       <meta property="og:title" content={data.title} key="og:title" />
+      <meta property="og:description" content={data.description} key="og:description" />    
+      <meta property="og:url" content={`https://fsaycon.dev/blog/${data.slug}`} key="og:url" />
+      <meta name="twitter:title" content={data.title} key="twitter:title" />
+      <meta name="twitter:description" content={data.description} key="twitter:description" />
     </Head>
     <BlogApp
       content={content}
@@ -41,10 +42,10 @@ export const getStaticPaths: GetStaticPaths  = async () => {
 
   return {
     paths: items.map((item) => ({
-        params: {
-          slug: item.data.slug,
-        },
-      })),
+      params: {
+        slug: item.data.slug,
+      },
+    })),
     fallback: false,
   }
 }
