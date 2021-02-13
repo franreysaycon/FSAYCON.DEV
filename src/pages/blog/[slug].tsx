@@ -9,6 +9,10 @@ import React from "react"
 const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
   <>
     <Head>
+      <title key="title">
+        FSAYCON.DEV -&nbsp;
+        {data.title}
+      </title>
       <link rel="canonical" href={`https://fsaycon.dev/blog/${data.slug}`} />
       <meta property="og:url" content={`https://fsaycon.dev/blog/${data.slug}`} key="og:url" />
       <meta name="description" content={data.description} key="description" />

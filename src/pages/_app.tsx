@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     <ThemeProvider theme={theme}>
       <Reset />
       <Head>
-        <title>FSAYCON.DEV - Personal Website of Franrey Saycon</title>
+        <title key="title">FSAYCON.DEV - Personal Website of Franrey Saycon</title>
         <meta
           name="description"
           content="Hi there, I'm Franrey Saycon. I'm a software engineer specializing in architecting solutions
