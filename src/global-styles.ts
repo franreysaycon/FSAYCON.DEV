@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
           url('/fonts/staatliches/staatliches-regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
   }
   @font-face {
     font-family: 'Barlow Condensed';
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
           url('/fonts/barlow-condensed/barlow-condensed-regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
-    font-display: block;
+    font-display: swap;
   }
   @font-face {
     font-family: 'Barlow Condensed';
@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
           url('/fonts/barlow-condensed/barlow-condensed-bold.woff') format('woff');
     font-weight: 700;
     font-style: bold;
-    font-display: block;
+    font-display: swap;
   }
   html {
     font-size: 16px;
