@@ -1,25 +1,17 @@
 import BlogApp from "components/blog"
 import { BlogPageProps } from "components/blog/types"
-import MetaHead from "components/common/MetaHead"
 import getAllPosts from "lib/get-all-posts"
 import getPostBySlug from "lib/get-post-by-slug"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import React from "react"
 
 const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
-  <>
-    <MetaHead
-      title={`FSAYCON.DEV - ${data.title}`}
-      description={data.description}
-      link={`https://fsaycon.dev/blog/${data.slug}`} 
-    />
-    <BlogApp
-      content={content}
-      title={data.title}
-      duration={data.duration}
-      date={data.date}
-    />
-  </>
+  <BlogApp
+    content={content}
+    title={data.title}
+    duration={data.duration}
+    date={data.date}
+  />
 )
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
