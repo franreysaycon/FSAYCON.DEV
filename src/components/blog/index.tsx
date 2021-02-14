@@ -1,3 +1,4 @@
+import Box from "atoms/Box"
 import Divider from "atoms/Divider"
 import Header from "atoms/Header"
 import MarginBox from "atoms/MarginBox"
@@ -44,25 +45,27 @@ const Icon = styled(ArrowLeft)`
 `
 
 const BlogPage: NextPage<BlogAppProps> = ({ content , title, duration, date}) => (
-  <Container>
-    <BackSpan onClick={goBack} role="button">
-      <Icon />
-      Go Back
-    </BackSpan>
-    <Header.H1>{title}</Header.H1>
-    <span>{`by: Franrey Saycon -- ${date} (${duration} read)`}</span>
-    <Content>
-      <ReactMarkdown renderers={{ 
-          paragraph: Paragraph,
-          thematicBreak: Divider,
-          image: CenterImage,
-          heading: Header.H3,
-        }}
-      >
-        {content}
-      </ReactMarkdown>
-    </Content>
-  </Container>
+  <Box>
+    <Container>
+      <BackSpan onClick={goBack} role="button">
+        <Icon />
+        Go Back
+      </BackSpan>
+      <Header.H1>{title}</Header.H1>
+      <span>{`by: Franrey Saycon -- ${date} (${duration} read)`}</span>
+      <Content>
+        <ReactMarkdown renderers={{ 
+            paragraph: Paragraph,
+            thematicBreak: Divider,
+            image: CenterImage,
+            heading: Header.H3,
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </Content>
+    </Container>
+  </Box>
 )
 
 export default BlogPage
