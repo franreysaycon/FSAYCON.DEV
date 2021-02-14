@@ -42,7 +42,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: ${({theme}) => theme.fonts.main};
     background-color: ${({theme}) => theme.colors.primaryWhite};
-    overflow-x: hidden;
   }
 `
 

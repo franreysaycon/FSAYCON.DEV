@@ -6,8 +6,6 @@ const MarginBox = styled.div`
   height: inherit;
   margin: auto;
   max-width: 1200px;
-  padding-left: ${({ theme }) => theme.spaces[5] };
-  padding-right: ${({ theme }) => theme.spaces[5] };
 `
 
 export default MarginBox

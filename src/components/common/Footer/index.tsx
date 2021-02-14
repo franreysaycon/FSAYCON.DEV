@@ -1,11 +1,10 @@
+import Box from "atoms/Box"
 import MarginBox from "atoms/MarginBox"
 import React from "react"
 import styled from "styled-components"
 
-const Container = styled.div`
+const Container = styled(Box)`
   background-color: ${({ theme }) => theme.colors.black};
-  display: flex;
-  flex: 1;
 `
 
 const Content = styled(MarginBox)`

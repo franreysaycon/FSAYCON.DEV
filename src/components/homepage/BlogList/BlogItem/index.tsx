@@ -61,7 +61,13 @@ const BlogItem: React.FC<BlogItemProps> = ({ slug, title, date, tags, duration, 
       animate={{ scale: 1, opacity: 1 }}
       initial={{ scale: 0.9, opacity: 0 }}
       transition={{ ease: "easeIn", duration: 0.5, delay: 1 + (index*0.1) }}
-      whileHover={{ top: -5 }}
+      whileHover={{ 
+        top: -7,
+        transition: {
+          ease: "linear",
+          duration: 0.1,
+        }
+      }}
     >
       <MarginContainer>
         <ArticleContainer>

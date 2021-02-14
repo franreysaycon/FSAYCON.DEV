@@ -5,7 +5,6 @@ import BlogItem from "./BlogItem"
 import { BlogListProps } from "./types"
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.gray};
   width: 100%;
 `
 

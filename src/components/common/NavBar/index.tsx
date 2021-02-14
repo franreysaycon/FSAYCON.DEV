@@ -2,13 +2,11 @@ import React from "react"
 import MarginBox from "atoms/MarginBox"
 import styled from "styled-components"
 import Logo from "atoms/Logo"
-import { motion } from "framer-motion"
+import Box from "atoms/Box"
 import NavLink from "./NavLink"
 
-const Container = styled(motion.div)`
-  display: flex;
+const Container = styled(Box)`
   background-color: ${({ theme }) => theme.colors.black };
-  display: flex;
   height: 3rem;
   align-items: center;
   justify-content: center;
