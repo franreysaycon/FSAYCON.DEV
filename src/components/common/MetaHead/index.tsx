@@ -5,9 +5,10 @@ interface MetaHeadProps {
   title: string;
   description: string;
   link: string;
+  previewImage: string;
 }
 
-const MetaHead: React.FC<MetaHeadProps> = ({ title, description, link }) => (
+const MetaHead: React.FC<MetaHeadProps> = ({ title, description, link, previewImage }) => (
   <Head>
     <title key="title">{title}</title>
     <meta name="title" content={title} key="meta-title" />
@@ -17,7 +18,7 @@ const MetaHead: React.FC<MetaHeadProps> = ({ title, description, link }) => (
     <meta property="og:type" content="article" key="og:type" />
     <meta property="og:title" content={title} key="og:title" />
     <meta property="og:description" content={description} key="og:description" />
-    <meta property="og:image" content="https://fsaycon.dev/preview-image.png" key="og:image" />
+    <meta property="og:image" content={`https://fsaycon.dev/${previewImage}`} key="og:image" />
     <meta
       property="og:image:alt"
       content="Fantasy drawing of Franrey Saycon in a sci-fi mechanic suit solving a cosmic rubix cube."
@@ -27,7 +28,7 @@ const MetaHead: React.FC<MetaHeadProps> = ({ title, description, link }) => (
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} key="twitter:title" />
     <meta name="twitter:description" content={description} key="twitter:description" />
-    <meta name="twitter:image" content="https://fsaycon.dev/preview-image.png" key="twitter:image" />
+    <meta name="twitter:image" content={`https://fsaycon.dev/${previewImage}`} key="twitter:image" />
     <meta
       name="twitter:image:alt"
       content="Fantasy drawing of Franrey Saycon in a sci-fi mechanic suit solving a cosmic rubix cube."

@@ -16,7 +16,12 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
       <Reset />
-      <MetaHead title={pageProps.meta?.title} description={pageProps.meta?.description} link={pageProps.meta?.link} />
+      <MetaHead
+        title={pageProps.meta?.title}
+        description={pageProps.meta?.description}
+        link={pageProps.meta?.link}
+        previewImage={pageProps.meta?.previewImage}
+      />
       <GlobalStyle />
       {
         fontLoaded && (

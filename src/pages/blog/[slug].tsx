@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         title: `FSAYCON.DEV - ${post.data.title}`,
         description: post.data.description,
         link: `https://fsaycon.dev/blog/${post.data.slug}`,
+        previewImage: `${post.data.slug}-preview.png`,
       },
     }
   }
