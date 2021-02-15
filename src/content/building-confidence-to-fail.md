@@ -68,7 +68,7 @@ In my team, we practice the "no stupid question rule" to make sure that everyone
 
 At the end of the day, the developers are the ones that produce output and it follows we need to take care of them. We should invest in them as well as the culture we inculcate as it has a direct influence on their productivity and growth in the company.
 
-To build my confidence to fail, I practice this culture whenever I go. You would want a team to have your back and as empowered as you. We want to have a cohesive team rather than one amazing "superhero" developer.
+To build my confidence to fail, I practice this culture wherever I go. You would want a team to have your back and as empowered as you. We want to have a cohesive team rather than one amazing "superhero" developer.
 
 ---
 
