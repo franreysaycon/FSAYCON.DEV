@@ -13,8 +13,8 @@ const BlogContainer = styled(MarginBox)`
   grid-column-gap: ${({ theme }) => theme.spaces[2]};
   grid-row-gap: ${({ theme }) => theme.spaces[2]};
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  padding-top: ${({ theme }) => theme.spaces[2]};
-  padding-bottom: ${({ theme }) => theme.spaces[2]};
+  padding-top: ${({ theme }) => theme.spaces[5]};
+  padding-bottom: ${({ theme }) => theme.spaces[5]};
 `
 
 const BlogList: React.FC<BlogListProps> = ({ items }) => (
