@@ -1,14 +1,15 @@
-import Modal from "atoms/Modal"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import CenterImageModal from "./CenterImageModal"
+import FullWidthImage from "./FullWidthImage"
 
 const Container = styled.div`
-  display: flex;
-  flex: 1;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   justify-content: center;
   margin: ${({ theme }) => theme.spaces[2]};
-  flex-direction: column;
 
   &:hover {
     cursor: pointer;
@@ -16,28 +17,9 @@ const Container = styled.div`
 `
 
 const AltText = styled.span`
-  font-style: italic;
-  font-size: ${({ theme }) => theme.fontSizes[1]};
   color: inherit;
-`
-
-const Image = styled.img`
-  width: 100%;
-  margin-bottom: ${({ theme }) => theme.spaces[0]};
-`
-
-const CenterImageModal = styled(Modal)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30rem;
-  height: fit-content;
-  padding-top: ${({ theme }) => theme.spaces[3]};
-  padding-bottom: ${({ theme }) => theme.spaces[3]};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    width: 50rem;
-  }
+  font-size: ${({ theme }) => theme.fontSizes[1]};
+  font-style: italic;
 `
 
 const CenterImage: React.FC<JSX.IntrinsicElements['img']> = ({ src, alt }) => {
@@ -66,15 +48,11 @@ const CenterImage: React.FC<JSX.IntrinsicElements['img']> = ({ src, alt }) => {
   return (
     <>
       <Container onClick={openModal}>
-        <Image src={src} alt={alt} />
+        <FullWidthImage src={src} alt={alt} />
         <AltText>{alt}</AltText>
       </Container>
       {
-        modalOpen && (
-          <CenterImageModal onClose={closeModal}>
-            <Image src={src} alt={alt} />
-          </CenterImageModal>
-        )
+        modalOpen && <CenterImageModal src={src} alt={alt} onClose={closeModal} />
       }
     </>
   )
