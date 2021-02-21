@@ -3698,6 +3698,11 @@ noop-logger@^0.1.1:
   resolved "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz#94a2b1633c4f1317553007d8966fd0e841b6a4c2"
   integrity sha1-lKKxYzxPExdVMAfYlm/Q6EG2pMI=
 
+normalize-domain@^0.0.124:
+  version "0.0.124"
+  resolved "https://registry.yarnpkg.com/normalize-domain/-/normalize-domain-0.0.124.tgz#64b30f88200ee17b4afbf805bd1d98851e51bbc1"
+  integrity sha512-ZAjriErPRaP2h1WYt2TfehbfjV9AryKGEKwRdAWUwlPNDIvA9jYriTM6cUrVLydI8DsHeUP2Vm4s5lx/1ECkjA==
+
 normalize-html-whitespace@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/normalize-html-whitespace/-/normalize-html-whitespace-1.0.0.tgz#5e3c8e192f1b06c3b9eee4b7e7f28854c7601e34"
