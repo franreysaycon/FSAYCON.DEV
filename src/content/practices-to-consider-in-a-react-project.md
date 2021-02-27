@@ -16,7 +16,7 @@ Some of these factors include exploring a monorepo solution to centralize your p
 
 I would choose a monorepo solution if there are many shared packages among your modules, avoid the push and pull overhead, and heighten developer experience when working across modules. The downsides for picking this would mean a polluted git history if not careful, overhead on learning technologies such as lerna and yarn workspaces, and possible complicated scripts to make everything work. There are no perfect solutions, only hardships you are willing to endure. (#deep)
 
-Another would be, is how you would organize your files. I would personally follow colocation and component grouping when dealing with React. So what the heck does that mean?
+Another would be, is how you would organize your files. I would personally follow component grouping or "thinking in components" when dealing with React. So what the heck does that mean?
 
 In React, it is recommended that we group functionality into components rather than separation just because they are of different format. In the "old ways", we see that javascript, HTML, and CSS are in different files. Whatever side you are on, this can be problematic as developer experience gets hampered when you need to check ten files just to create a form. You also need to open at least three files to know the whole context. The component way destroys these worries.
 
