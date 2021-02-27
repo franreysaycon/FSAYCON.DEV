@@ -6,15 +6,12 @@ import List from "atoms/List"
 import MarginBox from "atoms/MarginBox"
 import Paragraph from "atoms/Paragraph"
 import { NextPage } from "next"
-import dynamic from "next/dynamic"
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
+import BackButton from "./BackButton"
 import CenterImage from "./CenterImage"
 import { BlogAppProps } from "./types"
-
-
-const BackButton = dynamic(() => import('./BackButton'), { ssr: false })
 
 const Container = styled(MarginBox)`
   font-family: ${({ theme }) => theme.fonts.barlow};
