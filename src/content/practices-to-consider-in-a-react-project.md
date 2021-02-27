@@ -18,7 +18,7 @@ I would choose a monorepo solution if there are many shared packages among your 
 
 Another would be, is how you would organize your files. I would personally follow component grouping or "thinking in components" when dealing with React. So what the heck does that mean?
 
-In React, it is recommended that we group functionality into components rather than separation just because they are of different format. In the "old ways", we see that javascript, HTML, and CSS are in different files. Whatever side you are on, this can be problematic as developer experience gets hampered when you need to check ten files just to create a form. You also need to open at least three files to know the whole context. The component way destroys these worries.
+In React, it is recommended that we group functionality into components rather than follow separation of files with different formats. In the "old ways", we see that javascript, HTML, and CSS are in different files and grouped in their respective folders. Whatever side you are on, this can be problematic as developer experience gets hampered when you need to check ten files just to create a form. You also need to open at least three files to know the whole context. The component way destroys these worries.
 
 Instead of thinking in formats, you think in components. A button component contains its style (highly recommend to do CSS in JS), functionality (the javascript code), and structure ( HTML conveniently described using JSX). With this, we enforce brand consistency and more importantly, we have a handy reusable, style-independent, and functional ( if you did it right ) component you can use anywhere in your application.
 
