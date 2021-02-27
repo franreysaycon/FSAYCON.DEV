@@ -1,6 +1,8 @@
+import Anchor from "atoms/Anchor"
 import Box from "atoms/Box"
 import Divider from "atoms/Divider"
 import Header from "atoms/Header"
+import List from "atoms/List"
 import MarginBox from "atoms/MarginBox"
 import Paragraph from "atoms/Paragraph"
 import { NextPage } from "next"
@@ -42,6 +44,8 @@ const BlogPage: NextPage<BlogAppProps> = ({ content , title, duration, date}) =>
             thematicBreak: Divider,
             image: CenterImage,
             heading: Header.H3,
+            list: List,
+            link: Anchor,
           }}
         >
           {content}

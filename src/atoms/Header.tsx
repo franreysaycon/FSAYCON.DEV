@@ -10,7 +10,7 @@ const H = styled.header`
 
 interface HeaderProps {
   className?: string;
-  children: JSX.Element | string;
+  children: React.ReactNode;
 }
 
 const H1: React.FC<HeaderProps> = ({ className, children }) => (
