@@ -51,21 +51,27 @@ const TagContainer = styled.div`
   align-self: flex-end;
 `
 
-interface BlogItemProps extends BlogMetaData {
-  index: number;
+const itemVariants = {
+  visible: {
+    opacity: 1,
+    scale: 1, 
+    transition: {
+      ease: "easeIn",
+      duration: 0.6,
+    }
+  },
+  hidden: { opacity: 0, scale: 0.8 }
 }
 
-const BlogItem: React.FC<BlogItemProps> = ({ slug, title, date, tags, duration, description, index }) => (
+const BlogItem: React.FC<BlogMetaData> = ({ slug, title, date, tags, duration, description }) => (
   <Link href={`/blog/${slug}`}>
     <BlogItemContainer
-      animate={{ scale: 1, opacity: 1 }}
-      initial={{ scale: 0.9, opacity: 0 }}
-      transition={{ ease: "easeIn", duration: 0.5, delay: 1 + (index*0.1) }}
+      variants={itemVariants}
       whileHover={{ 
-        top: -7,
+        top: -10,
         transition: {
           ease: "linear",
-          duration: 0.1,
+          duration: 0.1
         }
       }}
     >
