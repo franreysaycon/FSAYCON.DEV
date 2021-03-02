@@ -1,0 +1,4 @@
+Sitemap: https://fsaycon.dev/sitemap.xml
+
+User-agent: *
+Allow: *

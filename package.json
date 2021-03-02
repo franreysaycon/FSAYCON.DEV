@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "deploy": "yarn build && yarn export",
+    "postExport": "node createSitemap.js",
+    "deploy": "yarn build && yarn export && yarn postExport",
     "lint": "eslint"
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.22",
+    "@sergeymyssak/nextjs-sitemap": "^1.1.1",
     "fontfaceobserver": "^2.1.0",
     "framer-motion": "^3.3.0",
     "gray-matter": "^4.0.2",
