@@ -3,15 +3,32 @@ import { BlogPageProps } from "components/blog/types"
 import getAllPosts from "lib/get-all-posts"
 import getPostBySlug from "lib/get-post-by-slug"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import Head from "next/head"
 import React from "react"
+import { jsonLdScriptProps } from "react-schemaorg"
+import { TechArticle } from "schema-dts"
 
 const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
-  <BlogApp
-    content={content}
-    title={data.title}
-    duration={data.duration}
-    date={data.date}
-  />
+  <>
+    <Head>
+      <script
+        {...jsonLdScriptProps<TechArticle>({
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          headline: data.title,
+          author: "Franrey Saycon",
+          dateCreated: data.date,
+          abstract: data.description
+        })}
+      />
+    </Head>
+    <BlogApp
+      content={content}
+      title={data.title}
+      duration={data.duration}
+      date={data.date}
+    />
+  </>
 )
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

@@ -11,22 +11,23 @@ const H = styled.header`
 interface HeaderProps {
   className?: string;
   children: React.ReactNode;
+  itemProp: string;
 }
 
-const H1: React.FC<HeaderProps> = ({ className, children }) => (
-  <H size={1} className={className}>{children}</H>
+const H1: React.FC<HeaderProps> = ({ className, children, itemProp }) => (
+  <H size={1} className={className} itemProp={itemProp}>{children}</H>
 )
 
-const H2: React.FC<HeaderProps> = ({ className, children }) => (
-  <H size={2} className={className}>{children}</H>
+const H2: React.FC<HeaderProps> = ({ className, children, itemProp }) => (
+  <H size={2} className={className} itemProp={itemProp}>{children}</H>
   )
 
-const H3: React.FC<HeaderProps> = ({ className, children }) => (
-  <H size={3} className={className}>{children}</H>
+const H3: React.FC<HeaderProps> = ({ className, children, itemProp }) => (
+  <H size={3} className={className} itemProp={itemProp}>{children}</H>
 )
 
-const H4: React.FC<HeaderProps> = ({ className, children }) => (
-  <H size={4} className={className}>{children}</H>
+const H4: React.FC<HeaderProps> = ({ className, children, itemProp }) => (
+  <H size={4} className={className} itemProp={itemProp}>{children}</H>
 )
 
 export default {

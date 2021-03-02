@@ -31,11 +31,17 @@ const Content = styled.article`
 
 const BlogPage: NextPage<BlogAppProps> = ({ content , title, duration, date}) => (
   <Box>
-    <Container>
+    <Container itemScope itemType="https://schema.org/TechArticle">
       <BackButton />
-      <Header.H1>{title}</Header.H1>
-      <span>{`by: Franrey Saycon -- ${date} (${duration} read)`}</span>
-      <Content>
+      <Header.H1 itemProp="headline">{title}</Header.H1>
+      <span>
+        {'by: '}
+        <span itemProp="author">Franrey Saycon</span>
+        {'-- '}
+        <time dateTime={date} itemProp="dateCreated">{date}</time>
+        {` (${duration} read)`}
+      </span>
+      <Content itemProp="articleBody">
         <ReactMarkdown renderers={{ 
             paragraph: Paragraph,
             thematicBreak: Divider,
