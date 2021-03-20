@@ -1,5 +1,5 @@
-import { BlogPageProps } from "components/blog/types";
+import { BlogMetaData } from "components/blog/types";
 
 export interface BlogListProps {
-  items: BlogPageProps[];
+  items: BlogMetaData[];
 }

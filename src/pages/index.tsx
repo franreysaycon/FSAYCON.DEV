@@ -9,16 +9,16 @@ const Homepage: React.FC<BlogListProps> = ({ items }) => (
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { items } = getAllPosts()
+  const items = getAllPosts()
   return {
     props: {
-        items: [...items],
-        meta: {
-          title: "FSAYCON.DEV - Personal Website of Franrey Saycon",
-          description: "Hi there, I'm Franrey Saycon. I'm a software engineer specializing in architecting solutions and building website/mobile apps.",
-          link: "https://fsaycon.dev/",
-          previewImage: "preview-image.png",
-        }
+      items,
+      meta: {
+        title: "FSAYCON.DEV - Personal Website of Franrey Saycon",
+        description: "Hi there, I'm Franrey Saycon. I'm a software engineer specializing in architecting solutions and building website/mobile apps.",
+        link: "https://fsaycon.dev/",
+        previewImage: "preview-image.png",
+      }
     }
   }
 }

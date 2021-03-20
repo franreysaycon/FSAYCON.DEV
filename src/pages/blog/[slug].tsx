@@ -1,5 +1,5 @@
 import BlogApp from "components/blog"
-import { BlogPageProps } from "components/blog/types"
+import { BlogItem } from "components/blog/types"
 import getAllPosts from "lib/get-all-posts"
 import getPostBySlug from "lib/get-post-by-slug"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
@@ -8,7 +8,7 @@ import React from "react"
 import { jsonLdScriptProps } from "react-schemaorg"
 import { TechArticle } from "schema-dts"
 
-const BlogPage: NextPage<BlogPageProps> = ({ content, data }) => (
+const BlogPage: NextPage<BlogItem> = ({ content, data }) => (
   <>
     <Head>
       <script
@@ -47,12 +47,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths  = async () => {
-  const { items } = getAllPosts()
+  const items = getAllPosts()
 
   return {
     paths: items.map((item) => ({
       params: {
-        slug: item.data.slug,
+        slug: item.slug,
       },
     })),
     fallback: false,

@@ -6,7 +6,7 @@ export interface BlogMetaData {
   tags: string[];
   description: string;
 }
-export interface BlogPageProps {
+export interface BlogItem {
   content: string | null;
   data: BlogMetaData;
 }

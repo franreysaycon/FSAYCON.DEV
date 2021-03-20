@@ -1,0 +1,287 @@
+---
+title: 'How I Built My Blog with NextJS'
+date: '2021-03-20'
+duration: '20 minutes'
+tags: 'Frontend, Javascript, JAMStack, NextJS'
+description: "Let's have a quick dive on NextJS fundamentals to build a blog just like this!"
+---
+
+I built my blog with Next for easy transition from an SSG to SSR solution dependent on future scale. Not to mention, the framework out of the box supports my needs for SEO, static page generation, and page optimizations. It even has that juicy incremental static regeneration! For this article, let's consider only vanilla NextJS. But, take note, blogs of larger scales might need other solutions. For my blog, vanilla's enough, at least for now. 
+
+Without further ado, let's start!
+
+First, we need to understand how exactly Next builds our frontend assets.  As we know, NextJS automatically creates an SSR server to serve your application on build and pre-renders HTML, on the other hand, if you intend to export.
+
+Dependent on how your app was architected, you can choose to integrate these assets with existing backend servers, deploy to Vercel for out-of-the-box NextJS support, and or export, aiming for a purely static build you can deploy on Netlify or Amazon S3 behind CloudFront. I chose the last option to follow a JAMStack architecture and the benefits that go along with it. *( pst, pick Netlify since it's free for public repositories lol.)*
+
+---
+
+# The Routing
+If you haven't read on Next already, the pages folder is where we define the routes our website will contain. It follows for a React component to ever see the light of day, it needs to be included in at least one page component.
+
+For example, on this website, I have routes for my homepage and several blog pages. To create a homepage, you define an `index.tsx` under the pages folder. To declare the different blog routes, I defined `blog/[slug].tsx`.  Let's discuss how such a naming convention generates the other blog routes. *(I used typescript btw if you're wondering about .tsx )*
+
+In NextJS, we have a concept of dynamic routing. We define filenames with `[]` for pages we expect to be non-static parameters. *(I had to choose a different word for dynamic haha)*. This convention allows reusing the code of whatever is defined in the `[slug].tsx` to different pages with just varying metadata or route parameter. Through this, I can focus on adding content rather than code every blog route manually and introduce too much "wetness" on the codebase. 
+
+That's routing out of the way. With this, we take a step further on the creation of the individual static generated pages.
+
+# Creation of Pages
+Since we have routing taken cared of, we need to understand how we could turn the page components that we built into actual HTML assets. 
+
+For us to generate the static equivalent of our code in Next, we need to use `next build`, to build the SSR server and pages that will be placed by default in `.next` and then, `next export` to pre-render and create all our HTML pages using the build. My `yarn deploy` script is just `next build && next deploy`.  Unless you changed something, these static assets should exist in the `out` folder.
+
+Dynamic routes are not magic. We need to guide NextJS what are the actual paths and initial props for the different pages under this route you intend to deploy.  For this, we will be tackling two important APIs under NextJS, `getStaticPaths` and `getStaticProps`. 
+
+**getStaticProps**
+
+`getStaticPaths`, when exported in a page component, will expose an API in the next build lifecycle of which whatever is returned in the `paths` key of the exported function. NextJS will generate the pages accordingly while calling `getStaticProps` every time passing in any defined parameters to the context. 
+
+```js
+// blog/[slug].tsx
+export const getStaticPaths: GetStaticPaths  = async () => {
+  return {
+    paths: [
+        { params: { slug: 'hello' } },
+        { params: { slug: 'world' } },
+        { params: { slug: 'hello-world' } },
+    ],
+    fallback: false,
+  }
+}
+```
+Do note that whatever parameters you pass under the params key should have at least one key that's the same as your chosen dynamic route key as this will be the filename of the corresponding HTML file.
+
+The above code on build will result in the creation of three routes:
+- blog/hello
+- blog/world
+- blog/hello-world
+
+Setting `fallback: false` will redirect all non-existent routes to 404.
+
+**getStaticProps**
+
+`getStaticProps`, on the other hand, when exported, provides the props of the page on build time. This function, if ever you need it, has a context object that contains the parameters of whatever is passed in `getStaticPaths` and other NextJS paradigms. *(we will ignore the other paradigms for now)*. You can imagine this is where you would provide metadata for SEO, the actual blog content, the preview image, and anything you can think of the page component might need.
+
+```js
+// blog/[slug].tsx
+const BlogPage: NextPage<{slug: string}> = ({ slug }) => (
+    <div>BLOG ROUTE: {slug}</div>
+)
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    return {
+        props: { slug: params.slug }
+    }
+}
+
+export const getStaticPaths: GetStaticPaths  = async () => {
+  return {
+    paths: [
+        { params: { slug: 'hello' } },
+        { params: { slug: 'world' } },
+        { params: { slug: 'hello-world' } },
+    ],
+    fallback: false,
+  }
+}
+```
+
+On the code above, we could guess how Next generates our static content. `getStaticProps` have access to the context object which contains the `params` sent from `getStaticPaths`. The actual component `BlogPage` will have access to whatever props was returned at `getStaticProps` of which Next will try to pre-render with the function's returned values. The generated HTML pages will contain a body, `<div>BLOG ROUTE: {slug}</div>` where slug is either hello, world or hello-world.
+
+This process is summarized in the image below. All of this magic happens at build time! (Isn't it amazing? but of course, as disclaimed earlier, it might not be ideal for bigger blogs since your build incrementally gets slower as more blogs are created.)
+
+!["Sample NextJS Static Generation"](/how-built-my-blog-in-nextjs/1.svg)
+
+Take note there are more steps behind the scenes in everything described in the diagram. What's important is you understand how the lifecycle works in a high level. Awesome! Only a few more steps. From this, you should be able to imagine how you would do the blog.
+
+---
+
+# The Content
+This is the cream of the crop! Now, we tackle how the actual content will show up. We all know there are many ways we can dress a chicken. This principle also applies here. 
+
+As hinted in the previous section, we will utilize `getStaticProps` and `getStaticPaths` for this problem.  The strategy is what follows:
+- We utilize `getStaticProps` in our index page to give a list of the different blogs so we can link them. Since this is fetched at build time, we have access to node-specific APIs and modules to fetch our content somewhere in the codebase.
+- We utilize `getStaticPaths` with the same idea above to generate the paths we need. 
+- We pass in the important parameters for the benefit of the specific blog page component. *(in my case the parameter is slug)*
+- Knowing that `getStaticProps` will have context on the parameters, we can use this as a key determining a filename at a certain file path or even as simple as a key in a JSON file somewhere in your codebase. With this, we can extract the specific content and pass it as initial props for the page component.
+- Create or use an existing component to use the content data and create an actual view.
+
+That's it! *(I might have made it longer than it should be but it's best we understand the whys and I like to tech babble)* Given the strategy above, we can technically use any solutions we want at our disposal. I'll just give an example of what I chose. 
+
+Here's my strategy for the actual blog implementation,
+- Create a folder inside the `src` folder, named `content` that will house several markdown files. *(Chose markdown since it's a well-known document standard and has a straightforward mapping on HTML elements in its syntax)*
+- Choose libraries that can parse markdown content as well as markdown meta content. I used `gray-matter` for extracting the markdown content and metadata and then utilize `react-markdown` for the view given the content parsed by `gray-matter`.
+- Create scripts that will sniff on the content folder, get the necessary metadata and content to be used at `getStaticProps` and `getStaticPaths`.
+- Create `BlogApp` component that will render the content and make use of the metadata.
+- Run next build and next deploy! Watch the magic happen.
+
+I created two scripts to help me in this process. The functions are as follows,
+- For getting all the files under `content` folder. 
+- For parsing the markdown file's content and metadata. 
+
+Here's an example of a markdown file with my chosen metadata. `gray-matter` can extract the metadata described below inside `---` block as well as the actual markdown content that comes right after. 
+```
+---
+title: 'Lorem ipsum'
+date: 'YYYY-MM-DD'
+duration: 'n minutes'
+tags: 'Tag1, Tag2, Tag3'
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
+
+Since this is typescript, let's dash through the important interfaces. `BlogMetaData` is my take on the different metadata that I deem important for a blog page. You will see my site meta strategy below! `BlogItem` is basically the actual blog page with the metadata. 
+```ts
+interface BlogMetaData {
+    title: string;
+    date: string;
+    slug: string;
+    duration: string;
+    tags: string[];
+    description: string;
+}
+
+interface BlogItem {
+    content: string | null;
+    data: BlogMetaData;
+}
+```
+
+To get content and metadata of specific post, *(this will be used to generate the static props of a blog page)*
+```ts
+const getPostBySlug = (slug: string): BlogItem => {
+
+    const postsDirectory = getPostDirectory()
+    const realSlug = slug.replace(/\.md$/, '')
+
+    const fullPath = join(postsDirectory, `${realSlug}.md`)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const { data, content } = matter(fileContents)
+
+    const metadata: BlogMetaData = {
+        title: data.title,
+        date: data.date,
+        duration: data.duration,
+        slug: slug as string,
+        tags: data.tags.split(','),
+        description: data.description,
+    }
+
+    return { content, data: metadata }
+}
+```
+
+
+To get all the posts and their metadata, *(this will be used at the Homepage to list and link the different blogs available)*
+```ts
+const sortMoment = (date1: string, date2: string): number => moment(date1).format('YYYY-MM-DD') > moment(date2).format('YYYY-MM-DD') ? -1: 1;
+
+const getAllPosts = (): BlogMetaData[] => {
+    const postsDirectory = getPostDirectory()
+    const slugs = fs.readdirSync(postsDirectory)
+
+    const blogItems: BlogItem[] = slugs.map(slug => getPostBySlug(slug.replace(/\.md$/, '')))
+    blogItems.sort((blogA, blogB) => sortMoment(blogA.data.date, blogB.data.date))
+
+    return blogItems.map(bi => bi.data)
+}
+```
+
+This is my take on blog app component that will make use of the data and metadata.
+```jsx
+const BlogPage: NextPage<BlogAppProps> = ({ content , title, duration, date }) => (
+    <Box>
+        <Container>
+            <BackButton />
+            <Header.H1>{title}</Header.H1>
+            <span>
+                {'by: '}
+                <span>Franrey Saycon</span>
+                {'-- '}
+                <time>{date}</time>
+                {` (${duration} read)`}
+            </span>
+            <Content>
+                <ReactMarkdown renderers={{ 
+                        paragraph: Paragraph,
+                        thematicBreak: Divider,
+                        image: CenterImage,
+                        heading: Header.H3,
+                        list: List,
+                        link: Anchor,
+                        code: Code,
+                        inlineCode: InlineCode,
+                        strong: Strong,
+                        emphasis: Emphasis,
+                    }}
+                >
+                    {content}
+                </ReactMarkdown>
+            </Content>
+        </Container>
+    </Box>
+)
+```
+
+`pages/blog/[slug].tsx` should contain `getStaticPaths` to define the different blog routes and `getStaticProps` for the pre-render props of the `BlogPage` component described above.
+```jsx
+const BlogPage: NextPage<BlogItem> = ({ content, data }) => (
+    <BlogApp
+        content={content}
+        title={data.title}
+        duration={data.duration}
+        date={data.date}
+    />
+)
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const post = getPostBySlug(params.slug as string)
+  return {
+    props: post,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths  = async () => {
+  const items = getAllPosts()
+
+  return {
+    paths: items.map((item) => ({
+      params: {
+        slug: item.slug,
+      },
+    })),
+    fallback: false,
+  }
+}
+
+export default BlogPage
+```
+
+`pages/index.tsx` should contain `getStaticProps` for the homepage view to have access on the list of available blogs. Take note that this should only have the necessary data because Next creates a data artifact that will be fetched on page load for the pages props, it should not contain the content of the actual markdown files, only the meta. *check out the out folder when you build && export, the data artifacts are defined at _next/data by default*
+```jsx
+const Homepage: React.FC<BlogListProps> = ({ items }) => (
+  <HomeApp items={items} />
+)
+
+export const getStaticProps: GetStaticProps = async () => {
+  const items = getAllPosts()
+  return {
+    props: {
+      items,
+    }
+  }
+}
+```
+
+That's it! You can check out the actual code in my [github](https://github.com/franreysaycon/fsaycon.dev). I didn't discussed some parts of my code such as SEO implementations among other things. But, given the strategies above, I'm sure there are other ways to do this. You can imagine changing the specific implementations described in some parts of my strategies to incorporate other solutions such as CMS services like [sanity.io](sanity.io) or even [Netlify CMS](https://www.netlifycms.org/). You may also choose to dump the whole idea of an SSG paradigm in favor of an SSR solution. Regardless, in my opinion, the stragies will remain the same but the implementation will be different. That's the beauty of these solutions. We can freely mix and match anything we want as long as we have a sound strategy as the foundation to hit our goals. 
+
+---
+
+Hope you learned a lot!
+
+*PS: You don't have to follow my strategies nor do I suggest this is the best way to do it. What matters the most is the comprehension of the fundamentals and strategies presented that will lead you to the creation of your signature implementation.*

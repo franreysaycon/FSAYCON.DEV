@@ -6,6 +6,7 @@ const List = styled.ul`
   color: inherit;
   list-style: unset;
   margin-left: ${({ theme }) => theme.spaces[6]};
+  margin-bottom: ${({ theme }) => theme.spaces[3]};
 `
 
 export default List

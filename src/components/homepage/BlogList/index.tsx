@@ -36,7 +36,7 @@ const BlogList: React.FC<BlogListProps> = ({ items }) => (
     <MarginBox>
       <MotionContainer initial="hidden" animate="visible" variants={listVariants}> 
         {
-          items.map( item => <BlogItem {...item.data} key={item.data.slug} />)
+          items.map( item => <BlogItem {...item} key={item.slug} />)
         }
       </MotionContainer>
     </MarginBox>

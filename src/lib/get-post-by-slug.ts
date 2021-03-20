@@ -1,10 +1,10 @@
-import { BlogMetaData, BlogPageProps } from "components/blog/types"
+import { BlogMetaData, BlogItem } from "components/blog/types"
 import matter from "gray-matter"
 import { join } from "path"
 import fs from "fs"
 import getPostDirectory from "./get-post-directory"
 
-const getPostBySlug = (slug: string): BlogPageProps => {
+const getPostBySlug = (slug: string): BlogItem => {
 
   const postsDirectory = getPostDirectory()
   const realSlug = slug.replace(/\.md$/, '')
