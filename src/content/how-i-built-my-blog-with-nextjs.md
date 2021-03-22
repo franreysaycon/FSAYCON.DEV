@@ -32,7 +32,7 @@ For us to generate the static equivalent of our code in Next, we need to use `ne
 
 Dynamic routes are not magic. We need to guide NextJS what are the actual paths and initial props for the different pages under this route you intend to deploy.  For this, we will be tackling two important APIs under NextJS, `getStaticPaths` and `getStaticProps`. 
 
-**getStaticProps**
+**getStaticPaths**
 
 `getStaticPaths`, when exported in a page component, will expose an API in the next build lifecycle of which whatever is returned in the `paths` key of the exported function. NextJS will generate the pages accordingly while calling `getStaticProps` every time passing in any defined parameters to the context. 
 
