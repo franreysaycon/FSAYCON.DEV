@@ -100,7 +100,7 @@ Take note there are more steps behind the scenes in everything described in the 
 This is the cream of the crop! Now, we tackle how the actual content will show up. We all know there are many ways we can dress a chicken. This principle also applies here. 
 
 As hinted in the previous section, we will utilize `getStaticProps` and `getStaticPaths` for this problem.  The strategy is what follows:
-- We utilize `getStaticProps` in our index page to give a list of the different blogs so we can link them. Since this is fetched at build time, we have access to node-specific APIs and modules to fetch our content somewhere in the codebase.
+- We utilize `getStaticProps` to get our necessary data. Since this process happens at build time, we have access to node-specific APIs and modules to fetch our content somewhere in the codebase.
 - We utilize `getStaticPaths` with the same idea above to generate the paths we need. 
 - We pass in the important parameters for the benefit of the specific blog page component. *(in my case the parameter is slug)*
 - Knowing that `getStaticProps` will have context on the parameters, we can use this as a key determining a filename at a certain file path or even as simple as a key in a JSON file somewhere in your codebase. With this, we can extract the specific content and pass it as initial props for the page component.
@@ -262,7 +262,7 @@ export const getStaticPaths: GetStaticPaths  = async () => {
 export default BlogPage
 ```
 
-`pages/index.tsx` should contain `getStaticProps` for the homepage view to have access on the list of available blogs. Take note that this should only have the necessary data because Next creates a data artifact that will be fetched on page load for the pages props, it should not contain the content of the actual markdown files, only the meta. *check out the out folder when you build && export, the data artifacts are defined at _next/data by default*
+`pages/index.tsx` should contain `getStaticProps` for the homepage view to have access on the list of available blogs. Take note that this should only have the necessary data because Next creates a data artifact that will be fetched on page load for the pages props, it should not contain the content of the actual markdown files, only the meta. We want these data artifacts to be as small as possible as it will affect your page load. *(check out the out folder when you build && export, the data artifacts are defined at _next/data by default)*
 ```jsx
 const Homepage: React.FC<BlogListProps> = ({ items }) => (
   <HomeApp items={items} />
