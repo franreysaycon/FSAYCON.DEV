@@ -1,10 +1,11 @@
 import { BlogMetaData } from "components/blog/types"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import Header from "atoms/Header"
 import Tag from "atoms/Tag"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 const BlogItemContainer = styled(motion.div)`
   display: flex;
@@ -54,41 +55,58 @@ const TagContainer = styled.div`
 const itemVariants = {
   visible: {
     opacity: 1,
-    scale: 1, 
+    y: 0,
     transition: {
       ease: "easeIn",
-      duration: 0.6,
+      duration: 0.5,
     }
   },
-  hidden: { opacity: 0, scale: 0.8 }
+  hidden: { opacity: 0, y: 30 }
 }
 
-const BlogItem: React.FC<BlogMetaData> = ({ slug, title, date, tags, duration, description }) => (
-  <Link href={`/blog/${slug}`}>
-    <BlogItemContainer
-      variants={itemVariants}
-      whileHover={{ 
-        top: -10,
-        transition: {
-          ease: "linear",
-          duration: 0.1
-        }
-      }}
-    >
-      <MarginContainer>
-        <ArticleContainer>
-          <Header.H2>{title}</Header.H2>
-          <MetaSpan>{`${date} (${duration} read)`}</MetaSpan>
-          <DetailSpan>{description}</DetailSpan>
-        </ArticleContainer>
-        <TagContainer>
-          {
-            tags.map( tag => <Tag key={tag}>{tag}</Tag>)
+const BlogItem: React.FC<BlogMetaData> = ({ slug, title, date, tags, duration, description }) => {
+  
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+  const controls = useAnimation()
+  
+  useEffect(() => {
+    if(inView){
+      controls.start("visible")
+    }
+  }, [inView])
+  
+  return (
+    <Link href={`/blog/${slug}`}>
+      <BlogItemContainer
+        initial="hidden"
+        variants={itemVariants}
+        whileHover={{ 
+          top: -10,
+          transition: {
+            ease: "linear",
+            duration: 0.1
           }
-        </TagContainer>
-      </MarginContainer>
-    </BlogItemContainer>
-  </Link>
-)
+        }}
+        animate={controls}
+        ref={ref}
+      >
+        <MarginContainer>
+          <ArticleContainer>
+            <Header.H2>{title}</Header.H2>
+            <MetaSpan>{`${date} (${duration} read)`}</MetaSpan>
+            <DetailSpan>{description}</DetailSpan>
+          </ArticleContainer>
+          <TagContainer>
+            {
+              tags.map( tag => <Tag key={tag}>{tag}</Tag>)
+            }
+          </TagContainer>
+        </MarginContainer>
+      </BlogItemContainer>
+    </Link>
+  )
+}
 
 export default BlogItem

@@ -42,10 +42,10 @@ const Detail = styled(motion.p)`
 `
 
 const Container = styled(MarginBox)`
-  margin-top: ${({ theme }) => theme.spaces[2]};
+  margin-top: calc(${({ theme }) => theme.spaces[2]} + 3rem);
 
   @media (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    margin-top: ${({ theme }) => theme.spaces[5]};
+    margin-top: calc(${({ theme }) => theme.spaces[5]} + 3rem);
   }
 `
 
@@ -61,22 +61,22 @@ const Hero: React.FC = () => (
     <DetailBox>
       <Header
         animate={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -25 }}
-        transition={{ ease: "easeIn", duration: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
       >
         Franrey Saycon
       </Header>
       <SubHeader
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        transition={{ ease: "easeIn", duration: 0.75, delay: 0.25 }}
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
       >
         Software Engineer / Architect • Team Lead
       </SubHeader>
       <Detail
-        animate={{ scale: 1, opacity: 1 }}
-        initial={{ scale: 0.75, opacity: 0 }}
-        transition={{ ease: "easeIn", duration: 0.75, delay: 0.5 }}
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
       >
         Hi there! I like sharing my knowledge about software engineering and architecture.
         I love solving problems. Let&apos;s learn together!

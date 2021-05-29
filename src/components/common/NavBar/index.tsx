@@ -6,10 +6,13 @@ import Box from "atoms/Box"
 import NavLink from "./NavLink"
 
 const Container = styled(Box)`
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
   background-color: ${({ theme }) => theme.colors.black };
   height: 3rem;
-  align-items: center;
-  justify-content: center;
+  z-index: ${({ theme }) => theme.zIndex.front};
 `
 
 const NavBox = styled(MarginBox)`
@@ -29,6 +32,6 @@ const NavBar: React.FC = () => (
       <NavLink />
     </NavBox>
   </Container>
-  )
+)
 
 export default NavBar

@@ -20,7 +20,7 @@ import { BlogAppProps } from "./types"
 const Container = styled(MarginBox)`
   font-family: ${({ theme }) => theme.fonts.barlow};
   flex-direction: column;
-  margin-top: ${({ theme }) => theme.spaces[3]};
+  margin-top: calc(${({ theme }) => theme.spaces[3]} + 3rem);
 `
 
 const Content = styled.article`
