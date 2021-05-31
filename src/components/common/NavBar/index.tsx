@@ -7,7 +7,7 @@ import NavLink from "./NavLink"
 
 const Container = styled(Box)`
   display: block;
-  width: 100%;
+  width: ${({ theme }) => `calc(100% - ${theme.spaces[5]} * 2)`};
   position: fixed;
   top: 0;
   background-color: ${({ theme }) => theme.colors.black };
